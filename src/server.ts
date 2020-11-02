@@ -13,7 +13,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Use the body parser middleware for post requests
   app.use(bodyParser.json());
 
-  // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
   // endpoint to filter an image from a public url.
   // IT SHOULD
@@ -34,6 +33,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       const filteredPath = await filterImageFromURL(image_url);
       res.status(200).sendFile(filteredPath, () => deleteLocalFiles([filteredPath]));
     } catch (error) {
+      console.log('Error occurred while creating the filtered image', error);
       res.status(500).send('Error');
     }
   } );
