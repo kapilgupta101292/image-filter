@@ -34,7 +34,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(200).sendFile(filteredPath, () => deleteLocalFiles([filteredPath]));
     } catch (error) {
       console.log('Error occurred while creating the filtered image', error);
-      res.status(500).send('Error');
+      res.status(422).send('Error');
     }
   } );
   
